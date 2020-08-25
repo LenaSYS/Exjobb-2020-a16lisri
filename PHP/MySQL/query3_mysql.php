@@ -19,7 +19,7 @@ for($i = 1; $i <=1000; $i++)
 {
     // Starting clock time in seconds - start inside loop to monitor transaction instance not the overall transaction time
         $start_time = microtime(true);
-        $query="select Data_value, Period from business";
+        $query="select Data_value, Period from business LIMIT 200";
         $mysqli->query("$query");
     // End clock time in seconds
         $end_time = microtime(true);
