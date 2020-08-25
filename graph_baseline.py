@@ -6,24 +6,24 @@ import pandas as pd
 import scipy.stats as stats
 
 dataList = [] # Tom Lista för data.
-#dataList2 = [] # En annan tom lista för ett annat dataset.
+dataList2 = [] # En annan tom lista för ett annat dataset.
 #dataList3 = []
 
 # Funktion för att läsa csv fil och appenda i listorna
 def readCSVdata():
-    with open('results2.csv') as rawdata:
-        readCSV = csv.reader(rawdata, delimiter=",")
-        for rad in readCSV:
-            for i in range(0, len(rad)):
-                if(i % 2): #Varannat datavärde
-                    dataList.append(float(rad[i])) #Lägg till värdet i dataList
+    with open('Datainsamling/baseline_mysql_100.csv', 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            every_other = row[1::2]
+            for i in every_other:
+                dataList.append(min(float(i) * 1000, 500)) #Gångrar varje värde med 1000 för att få sekunder till millisekunder
     # With open... som tidigare för att importera fler dataset.
-    #with open('search_data_utancaching_apache2.csv') as rawdata:
-        #readCSV = csv.reader(rawdata, delimiter=",")
-        #for rad in readCSV:
-            #for i in range(0, len(rad)):
-                #if(i % 2):
-                    #dataList2.append(int(rad[i]))
+    with open('Datainsamling/baseline_mongodb_100.csv', 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            every_other = row[1::2]
+            for i in every_other:
+                dataList2.append(min(float(i) * 1000, 500)) #Gångrar varje värde med 1000 för att få sekunder till millisekunder
     #with open('apache2_baseline.csv') as rawdata:
         #readCSV = csv.reader(rawdata, delimiter=",")
         #for rad in readCSV:
@@ -46,14 +46,14 @@ def render():
 
     #Rita ut linjediagram
     ax.plot(dataList, color="green", alpha = 1, label = "MySQL")
-    #ax.plot(dataList2, color="blue", alpha= 0.6, label = "No Caching (Apache2)")
+    ax.plot(dataList2, color="blue", alpha= 1, label = "MongoDB")
     #ax.plot(dataList3, color="red", alpha= 0.8, label = "Baseline (Caching Apache2)")
     #Går att repetera för fler linjer i samma figur.
 
     #Göra dataLists till arrays
     array1= np.array(dataList)
     type(array1)
-    #array2= np.array(dataList2)
+    array2= np.array(dataList2)
     #type(array2)
     #array3= np.array(dataList3)
     #type(array3)
@@ -61,19 +61,19 @@ def render():
     #Standardavikelse
     sd1 = np.std(array1)
     #print("Standard Deviation : ", sd1)
-    #sd2 = np.std(array2)
+    sd2 = np.std(array2)
     #print("Standard Deviation : ", sd2)
     #sd3 = np.std(array3)
     #print("Standard Deviation : ", sd3)
 
     #Median på stapeldiagrammen
     median1 = np.median(array1)
-    #median2 = np.median(array2)
+    median2 = np.median(array2)
     #median3 = np.median(array3)
 
     #Skapa stapeldiagram
-    ax2.bar(0, median1, color="green", label = "Median Caching (Nginx)", width= 0.5, align='center', alpha= 0.6, yerr= sd1, capsize=10)
-    #ax2.bar(1, median2, color="blue", label = "Median No Caching (Apache2)", width= 0.5, align='center', alpha= 0.6, yerr=sd2, capsize=10)
+    ax2.bar(0, median1, color="green", label = "MySQL", width= 0.5, align='center', alpha= 0.6, yerr= sd1, capsize=10)
+    ax2.bar(1, median2, color="blue", label = "MongoDB", width= 0.5, align='center', alpha= 0.6, yerr=sd2, capsize=10)
     #ax2.bar(2, median3, color="red", label = "Median Baseline (Caching Apache2)", width= 0.5, align='center', alpha= 0.6, yerr=sd3, capsize=10)
     #Går även att repetera
 
@@ -85,8 +85,8 @@ def render():
     ax2.legend()
 
     #Sätta limit på höjden
-    ax.set(ylim=(0,0.0110))
-    ax2.set(ylim=(0,0.00100))
+    ax.set(ylim=(0,250))
+    ax2.set(ylim=(0,100))
 
     #Visa graferna
     plt.show()
