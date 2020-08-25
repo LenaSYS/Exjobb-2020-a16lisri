@@ -45,8 +45,8 @@ def render():
     ax2.set_ylabel('Loading times (ms)')
 
     #Rita ut linjediagram
-    ax.plot(dataList, color="green", alpha = 1, label = "MySQL")
-    ax.plot(dataList2, color="blue", alpha= 1, label = "MongoDB")
+    ax.plot(dataList, color="blue", alpha = 1, label = "MySQL")
+    ax.plot(dataList2, color="green", alpha= 1, label = "MongoDB")
     #ax.plot(dataList3, color="red", alpha= 0.8, label = "Baseline (Caching Apache2)")
     #Går att repetera för fler linjer i samma figur.
 
@@ -72,8 +72,8 @@ def render():
     #median3 = np.median(array3)
 
     #Skapa stapeldiagram
-    ax2.bar(0, median1, color="green", label = "MySQL", width= 0.5, align='center', alpha= 0.6, yerr= sd1, capsize=10)
-    ax2.bar(1, median2, color="blue", label = "MongoDB", width= 0.5, align='center', alpha= 0.6, yerr=sd2, capsize=10)
+    ax2.bar(0, median1, color="blue", label = "MySQL", width= 0.5, align='center', alpha= 0.6, yerr= sd1, capsize=10)
+    ax2.bar(1, median2, color="green", label = "MongoDB", width= 0.5, align='center', alpha= 0.6, yerr=sd2, capsize=10)
     #ax2.bar(2, median3, color="red", label = "Median Baseline (Caching Apache2)", width= 0.5, align='center', alpha= 0.6, yerr=sd3, capsize=10)
     #Går även att repetera
 
