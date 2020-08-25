@@ -67,13 +67,13 @@ def render():
     #print("Standard Deviation : ", sd3)
 
     #Median på stapeldiagrammen
-    median1 = np.median(array1)
-    median2 = np.median(array2)
+    mean1 = np.mean(array1)
+    mean2 = np.mean(array2)
     #median3 = np.median(array3)
 
     #Skapa stapeldiagram
-    ax2.bar(0, median1, color="blue", label = "MySQL", width= 0.5, align='center', alpha= 0.6, yerr= sd1, capsize=10)
-    ax2.bar(1, median2, color="green", label = "MongoDB", width= 0.5, align='center', alpha= 0.6, yerr=sd2, capsize=10)
+    ax2.bar(0, mean1, color="blue", label = "MySQL", width= 0.5, align='center', alpha= 0.6, yerr= sd1, capsize=10)
+    ax2.bar(1, mean2, color="green", label = "MongoDB", width= 0.5, align='center', alpha= 0.6, yerr=sd2, capsize=10)
     #ax2.bar(2, median3, color="red", label = "Median Baseline (Caching Apache2)", width= 0.5, align='center', alpha= 0.6, yerr=sd3, capsize=10)
     #Går även att repetera
 
@@ -85,7 +85,7 @@ def render():
     ax2.legend()
 
     #Sätta limit på höjden
-    ax.set(ylim=(0,250))
+    ax.set(ylim=(0,200))
     ax2.set(ylim=(0,100))
 
     #Visa graferna
