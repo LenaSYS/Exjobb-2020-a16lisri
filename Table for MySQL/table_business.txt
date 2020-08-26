@@ -1,0 +1,16 @@
+CREATE TABLE business (
+Series_reference VARCHAR(255) NOT NULL, 
+Period INT NOT NULL, 
+Data_value INT NOT NULL,
+STATUS VARCHAR(255) NOT NULL, 
+UNITS VARCHAR(255),
+Subject VARCHAR(255), 
+‘Group’ VARCHAR(255), 
+Series_title_1 VARCHAR(255), 
+Series_title_2 VARCHAR(255), 
+Series_title_3 VARCHAR(255), 
+Series_title_4 VARCHAR(255), 
+Series_title_5 VARCHAR(255), 
+id INT NOT NULL AUTO_INCREMENT, 
+PRIMARY KEY (id) 
+);
