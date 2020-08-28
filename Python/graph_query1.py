@@ -43,19 +43,19 @@ def render():
     # Går att repetera för att skapa fler diagram
     fig, (ax2) = plt.subplots(1)
 
-    ax.set_title('Loading times per search')
+    ax.set_title('Query 1')
     ax.set_xlabel('Number of searches')
     ax.set_ylabel('Loading times (ms)')
 
-    ax2.set_title('Mean and standard deviation ')
-    ax2.set_xlabel('Mean')
+    ax2.set_title('Query 1')
+    ax2.set_xlabel('Mean and standard deviation')
     ax2.set_ylabel('Loading times (ms)')
 
     #Rita ut linjediagram
     ax.plot(datalist, color="blue", alpha = 1, label = "MySQL (Query 1)")
-    ax.plot(datalist2, color="green", alpha= 1, label = "MongoDB (Query 1)")
+    ax.plot(datalist2, color="red", alpha= 1, label = "MongoDB (Query 1)")
     ax.plot(datalist3, color="blue", alpha= 0.45, label = "MySQL (Baseline)")
-    ax.plot(datalist4, color="green", alpha= 0.45, label = "Mongodb (Baseline)")
+    ax.plot(datalist4, color="red", alpha= 0.45, label = "Mongodb (Baseline)")
     #Går att repetera för fler linjer i samma figur.
 
     #Göra dataLists till arrays
@@ -86,9 +86,9 @@ def render():
 
     #Skapa stapeldiagram
     ax2.bar(0, mean1, color="blue", label = "MySQL (Query 1)", width= 0.5, align='center', alpha= 0.8, yerr= sd1, capsize=10)
-    ax2.bar(1, mean2, color="green", label = "MongoDB (Query 1)", width= 0.5, align='center', alpha= 0.8, yerr=sd2, capsize=10)
+    ax2.bar(1, mean2, color="red", label = "MongoDB (Query 1)", width= 0.5, align='center', alpha= 0.8, yerr=sd2, capsize=10)
     ax2.bar(2, mean3, color="blue", label = "MySQL (Baseline)", width= 0.5, align='center', alpha= 0.5, yerr=sd3, capsize=10)
-    ax2.bar(3, mean4, color="green", label = "Mongodb (Baseline)", width= 0.5, align='center', alpha= 0.5, yerr=sd4, capsize=10)
+    ax2.bar(3, mean4, color="red", label = "Mongodb (Baseline)", width= 0.5, align='center', alpha= 0.5, yerr=sd4, capsize=10)
     #Går även att repetera
 
     #För att ta bort axel:
