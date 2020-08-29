@@ -85,8 +85,8 @@ def render():
     mean4 = np.mean(array4)
 
     #Skapa stapeldiagram
-    ax2.bar(0, mean1, color="blue", label = "MySQL (Query 1)", width= 0.5, align='center', alpha= 0.8, yerr= sd1, capsize=10)
-    ax2.bar(1, mean2, color="red", label = "MongoDB (Query 1)", width= 0.5, align='center', alpha= 0.8, yerr=sd2, capsize=10)
+    ax2.bar(0, mean1, color="blue", label = "MySQL (Query 4)", width= 0.5, align='center', alpha= 0.8, yerr= sd1, capsize=10)
+    ax2.bar(1, mean2, color="red", label = "MongoDB (Query 4)", width= 0.5, align='center', alpha= 0.8, yerr=sd2, capsize=10)
     ax2.bar(2, mean3, color="blue", label = "MySQL (Baseline)", width= 0.5, align='center', alpha= 0.5, yerr=sd3, capsize=10)
     ax2.bar(3, mean4, color="red", label = "Mongodb (Baseline)", width= 0.5, align='center', alpha= 0.5, yerr=sd4, capsize=10)
     #Går även att repetera
