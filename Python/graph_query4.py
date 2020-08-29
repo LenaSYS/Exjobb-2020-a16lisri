@@ -52,8 +52,8 @@ def render():
     ax2.set_ylabel('Loading times (ms)')
 
     #Rita ut linjediagram
-    ax.plot(datalist, color="blue", alpha = 1, label = "MySQL (Query 1)")
-    ax.plot(datalist2, color="red", alpha= 1, label = "MongoDB (Query 1)")
+    ax.plot(datalist, color="blue", alpha = 1, label = "MySQL (Query 4)")
+    ax.plot(datalist2, color="red", alpha= 1, label = "MongoDB (Query 4)")
     ax.plot(datalist3, color="blue", alpha= 0.45, label = "MySQL (Baseline)")
     ax.plot(datalist4, color="red", alpha= 0.45, label = "Mongodb (Baseline)")
     #Går att repetera för fler linjer i samma figur.
