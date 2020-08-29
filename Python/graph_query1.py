@@ -24,19 +24,19 @@ def readCSVdata():
         for row in reader:
             every_other = row[1::2]
             for i in every_other:
-                datalist2.append(min(float(i) * 1000, 600)) #Gångrar varje värde med 1000 för att få sekunder till millisekunder
+                datalist2.append(min(float(i) * 1000, 600))
     with open('Datainsamling/baseline_mysql_1000.csv', 'r') as f:
         reader = csv.reader(f)
         for row in reader:
             every_other = row[1::2]
             for i in every_other:
-                datalist3.append(min(float(i) * 1000, 600)) #Gångrar varje värde med 1000 för att få sekunder till millisekunder
+                datalist3.append(min(float(i) * 1000, 600))
     with open('Datainsamling/baseline_mongodb_1000.csv', 'r') as f:
         reader = csv.reader(f)
         for row in reader:
             every_other = row[1::2]
             for i in every_other:
-                datalist4.append(min(float(i) * 1000, 600)) #Gångrar varje värde med 1000 för att få sekunder till millisekunder
+                datalist4.append(min(float(i) * 1000, 600))
 # Funktion för att rendera ut plots.
 def render():
     fig, (ax) = plt.subplots(1) #Skapa en subplot för en figur
